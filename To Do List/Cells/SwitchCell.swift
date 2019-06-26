@@ -9,5 +9,5 @@
 import UIKit
 
 class SwitchCell: UITableViewCell {
-    @IBOutlet var `switch`: UISwitch!
+    @IBOutlet var `switch`: SectionSwitch!
 }

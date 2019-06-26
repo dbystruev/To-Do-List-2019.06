@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="426" y="30"/>
         </scene>
-        <!--To Do Item Table View Controller-->
+        <!--Details-->
         <scene sceneID="tTA-UC-uhb">
             <objects>
                 <tableViewController id="Q7Z-YE-oUz" customClass="ToDoItemTableViewController" customModule="To_Do_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -98,7 +98,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hWm-hT-VfB" customClass="DatePicker" customModule="To_Do_List" customModuleProvider="target">
+                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hWm-hT-VfB" customClass="SectionDatePicker" customModule="To_Do_List" customModuleProvider="target">
                                             <rect key="frame" x="20" y="11" width="374" height="22"/>
                                             <date key="date" timeIntervalSinceReferenceDate="582835585.48770499">
                                                 <!--2019-06-21 18:46:25 +0000-->
@@ -145,7 +145,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-EW-0Gf">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h2v-EW-0Gf" customClass="SectionSwitch" customModule="To_Do_List" customModuleProvider="target">
                                             <rect key="frame" x="182.5" y="6.5" width="51" height="31"/>
                                         </switch>
                                     </subviews>
@@ -165,7 +165,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hFf-ZU-2j0">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hFf-ZU-2j0" customClass="SectionTextField" customModule="To_Do_List" customModuleProvider="target">
                                             <rect key="frame" x="20" y="11" width="374" height="22"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -189,8 +189,23 @@
                             <outlet property="delegate" destination="Q7Z-YE-oUz" id="PGt-Q7-25H"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Details" id="ZwA-aV-q5J">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="284-Oh-cWi">
+                            <connections>
+                                <segue destination="JDw-RJ-qmo" kind="unwind" unwindAction="unwind:" id="eOx-4Z-XAC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="bHD-Eg-Lwq">
+                            <connections>
+                                <segue destination="JDw-RJ-qmo" kind="unwind" identifier="SaveSegue" unwindAction="unwind:" id="Bhd-73-Tgq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaJ-s3-5az" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JDw-RJ-qmo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1380" y="28"/>
         </scene>

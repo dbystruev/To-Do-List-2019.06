@@ -8,6 +8,6 @@
 
 import UIKit
 
-class DatePicker: UIDatePicker {
-    var indexPath: IndexPath!
+class SectionDatePicker: UIDatePicker {
+    var section: Int!
 }

@@ -39,4 +39,13 @@ class ToDoTableViewController: UITableViewController {
         cell.imageView?.image = todo.image
         return cell
     }
+    
+    // MARK: - Navigation
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        guard segue.identifier == "SaveSegue" else { return }
+        let source = segue.source as! ToDoItemTableViewController
+        guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
+        todos[selectedIndex.row] = source.todo
+        tableView.reloadRows(at: [selectedIndex], with: .automatic)
+    }
 }

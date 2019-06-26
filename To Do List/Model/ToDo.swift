@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToDo {
+@objcMembers class ToDo: NSObject {
     var title: String
     var isComplete: Bool
     var dueDate: Date

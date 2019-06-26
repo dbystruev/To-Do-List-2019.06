@@ -44,6 +44,8 @@ extension ToDoItemTableViewController {
         if let stringValue = value as? String {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
+            cell.textField.addTarget(self, action: #selector(textFieldValueChanged(_:)), for: .editingChanged)
+            cell.textField.section = indexPath.section
             cell.textField.text = stringValue
             return cell
             
@@ -58,8 +60,9 @@ extension ToDoItemTableViewController {
                 
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DatePickerCell") as! DatePickerCell
+                cell.datePicker.addTarget(self, action: #selector(datePickerValueChanged(_:)), for: .valueChanged)
                 cell.datePicker.date = dateValue
-                cell.datePicker.indexPath = indexPath
+                cell.datePicker.section = indexPath.section
                 cell.datePicker.minimumDate = Date()
                 
                 return cell
@@ -78,15 +81,43 @@ extension ToDoItemTableViewController {
         } else if let boolValue = value as? Bool {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell") as! SwitchCell
+            cell.switch.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
             cell.switch.isOn = boolValue
+            cell.switch.section = indexPath.section
             return cell
             
         } else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell") as! TextFieldCell
+            cell.textField.addTarget(self, action: #selector(textFieldValueChanged(_:)), for: .editingChanged)
+            cell.textField.section = indexPath.section
             cell.textField.text = ""
             return cell
             
         }
+    }
+}
+
+// MARK: - Actions
+extension ToDoItemTableViewController {
+    @objc func datePickerValueChanged(_ sender: SectionDatePicker) {
+        let section = sender.section!
+        let key = todo.keys[section]
+        let value = sender.date
+        todo.setValue(value, forKey: key)
+        let labelIndexPath = IndexPath(row: 0, section: section)
+        tableView.reloadRows(at: [labelIndexPath], with: .automatic)
+    }
+    
+    @objc func switchValueChanged(_ sender: SectionSwitch) {
+        let key = todo.keys[sender.section!]
+        let value = sender.isOn
+        todo.setValue(value, forKey: key)
+    }
+    
+    @objc func textFieldValueChanged(_ sender: SectionTextField) {
+        let key = todo.keys[sender.section!]
+        let text = sender.text ?? ""
+        todo.setValue(text, forKey: key)
     }
 }
