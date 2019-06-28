@@ -91,14 +91,14 @@
                                     <outlet property="label" destination="7Nk-F6-6gX" id="5vL-5a-1hj"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DatePickerCell" id="e1N-X8-Ciu" customClass="DatePickerCell" customModule="To_Do_List" customModuleProvider="target">
+                            <tableViewCell hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DatePickerCell" id="e1N-X8-Ciu" customClass="DatePickerCell" customModule="To_Do_List" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e1N-X8-Ciu" id="Bjj-N2-nyG">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hWm-hT-VfB" customClass="SectionDatePicker" customModule="To_Do_List" customModuleProvider="target">
+                                        <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="hWm-hT-VfB" customClass="SectionDatePicker" customModule="To_Do_List" customModuleProvider="target">
                                             <rect key="frame" x="20" y="11" width="374" height="22"/>
                                             <date key="date" timeIntervalSinceReferenceDate="582835585.48770499">
                                                 <!--2019-06-21 18:46:25 +0000-->
@@ -106,10 +106,10 @@
                                         </datePicker>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="hWm-hT-VfB" secondAttribute="bottom" id="6xC-Dt-H8h"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hWm-hT-VfB" secondAttribute="bottom" priority="750" id="6xC-Dt-H8h"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="hWm-hT-VfB" secondAttribute="trailing" id="Wkn-fM-lDg"/>
                                         <constraint firstItem="hWm-hT-VfB" firstAttribute="leading" secondItem="Bjj-N2-nyG" secondAttribute="leadingMargin" id="haE-bS-BWW"/>
-                                        <constraint firstItem="hWm-hT-VfB" firstAttribute="top" secondItem="Bjj-N2-nyG" secondAttribute="topMargin" id="ndF-uG-XDa"/>
+                                        <constraint firstItem="hWm-hT-VfB" firstAttribute="top" secondItem="Bjj-N2-nyG" secondAttribute="topMargin" priority="750" id="ndF-uG-XDa"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>

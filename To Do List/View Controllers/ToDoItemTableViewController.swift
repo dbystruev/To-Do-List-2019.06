@@ -15,6 +15,15 @@ class ToDoItemTableViewController: UITableViewController {
 
 // MARK: - UITableViewDataSource
 extension ToDoItemTableViewController/*: UITableViewDataSource*/ {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let value = todo.values[indexPath.section]
+        if let cell = tableView.cellForRow(at: indexPath) {
+            return cell.isHidden ? 0 : UITableView.automaticDimension
+        } else {
+            return value is Date && indexPath.row == 1 ? 0 : UITableView.automaticDimension
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return todo.keys.count
     }
@@ -119,5 +128,15 @@ extension ToDoItemTableViewController {
         let key = todo.keys[sender.section!]
         let text = sender.text ?? ""
         todo.setValue(text, forKey: key)
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension ToDoItemTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let datePickerIndexPath = IndexPath(row: 1, section: indexPath.section)
+        guard let datePickerCell = tableView.cellForRow(at: datePickerIndexPath) as? DatePickerCell else { return }
+        datePickerCell.isHidden.toggle()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
