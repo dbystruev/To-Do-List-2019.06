@@ -40,15 +40,7 @@ import UIKit
     var values: [Any?] {
         return Mirror(reflecting: self).children.map { $0.value }
     }
-    
-    var formattedDate: String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.current
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
-        return formatter.string(from: dueDate)
-    }
-    
+        
     override func copy() -> Any {
         let newToDo = ToDo(title: title, isComplete: isComplete, dueDate: dueDate, notes: notes, image: image)
         return newToDo

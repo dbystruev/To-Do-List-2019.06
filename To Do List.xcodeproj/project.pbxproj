@@ -22,6 +22,8 @@
 		692A540C22BD5C23008C492F /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A540B22BD5C22008C492F /* ImageCell.swift */; };
 		692A540E22BD5C6C008C492F /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692A540D22BD5C6C008C492F /* SwitchCell.swift */; };
 		69819BEE22C653AF00E38721 /* SectionImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69819BED22C653AF00E38721 /* SectionImagePickerController.swift */; };
+		69819BF022C664EC00E38721 /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69819BEF22C664EC00E38721 /* ToDoCell.swift */; };
+		69819BF222C666B100E38721 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69819BF122C666B100E38721 /* Date+Extension.swift */; };
 		6985DA5822C3E79700056B4A /* SectionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6985DA5722C3E79700056B4A /* SectionTextField.swift */; };
 		6985DA5A22C3E85A00056B4A /* SectionSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6985DA5922C3E85A00056B4A /* SectionSwitch.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,8 @@
 		692A540B22BD5C22008C492F /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		692A540D22BD5C6C008C492F /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		69819BED22C653AF00E38721 /* SectionImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionImagePickerController.swift; sourceTree = "<group>"; };
+		69819BEF22C664EC00E38721 /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		69819BF122C666B100E38721 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		6985DA5722C3E79700056B4A /* SectionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTextField.swift; sourceTree = "<group>"; };
 		6985DA5922C3E85A00056B4A /* SectionSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionSwitch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +140,7 @@
 		692A53F822BD4E48008C492F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				69819BF122C666B100E38721 /* Date+Extension.swift */,
 				692A53F922BD4E8D008C492F /* String+Extension.swift */,
 			);
 			path = Extensions;
@@ -149,6 +154,7 @@
 				692A540B22BD5C22008C492F /* ImageCell.swift */,
 				692A540D22BD5C6C008C492F /* SwitchCell.swift */,
 				692A540222BD5A0B008C492F /* TextFieldCell.swift */,
+				69819BEF22C664EC00E38721 /* ToDoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -239,6 +245,8 @@
 				692A53FA22BD4E8D008C492F /* String+Extension.swift in Sources */,
 				692A53FE22BD51DE008C492F /* ToDoTableViewController.swift in Sources */,
 				6985DA5822C3E79700056B4A /* SectionTextField.swift in Sources */,
+				69819BF022C664EC00E38721 /* ToDoCell.swift in Sources */,
+				69819BF222C666B100E38721 /* Date+Extension.swift in Sources */,
 				692A540022BD51F6008C492F /* ToDoItemTableViewController.swift in Sources */,
 				69819BEE22C653AF00E38721 /* SectionImagePickerController.swift in Sources */,
 				692A53F722BD4AEF008C492F /* ToDo.swift in Sources */,
