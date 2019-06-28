@@ -11,13 +11,7 @@ import UIKit
 class ToDoTableViewController: UITableViewController {
     var todos = [ToDo]()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "ToDoItemSegue" else { return }
-        guard let destination = segue.destination as? ToDoItemTableViewController else { return }
-        guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
-        destination.todo = todos[selectedIndex.row]
-    }
-    
+    // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         todos = [
@@ -27,6 +21,7 @@ class ToDoTableViewController: UITableViewController {
         ]
     }
     
+    // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todos.count
     }
@@ -41,6 +36,13 @@ class ToDoTableViewController: UITableViewController {
     }
     
     // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ToDoItemSegue" else { return }
+        guard let destination = segue.destination as? ToDoItemTableViewController else { return }
+        guard let selectedIndex = tableView.indexPathForSelectedRow else { return }
+        destination.todo = todos[selectedIndex.row].copy() as! ToDo
+    }
+    
     @IBAction func unwind(_ segue: UIStoryboardSegue) {
         guard segue.identifier == "SaveSegue" else { return }
         let source = segue.source as! ToDoItemTableViewController

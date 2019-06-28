@@ -134,9 +134,59 @@ extension ToDoItemTableViewController {
 // MARK: - UITableViewDelegate
 extension ToDoItemTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let datePickerIndexPath = IndexPath(row: 1, section: indexPath.section)
-        guard let datePickerCell = tableView.cellForRow(at: datePickerIndexPath) as? DatePickerCell else { return }
-        datePickerCell.isHidden.toggle()
+        let value = todo.values[indexPath.section]
+        
+        if value is Date {
+            
+            let datePickerIndexPath = IndexPath(row: 1, section: indexPath.section)
+            guard let datePickerCell = tableView.cellForRow(at: datePickerIndexPath) as? DatePickerCell else { return }
+            datePickerCell.isHidden.toggle()
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            
+        } else if value is UIImage {
+            
+            let alert = UIAlertController(title: "Choose Source", message: nil, preferredStyle: .actionSheet)
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(cancel)
+            
+            let imagePicker = SectionImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.section = indexPath.section
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                let cameraAction = UIAlertAction(title: "Camera", style: .default) { action in
+                    imagePicker.sourceType = .camera
+                    self.present(imagePicker, animated: true)
+                }
+                alert.addAction(cameraAction)
+            }
+            
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                let photoAction = UIAlertAction(title: "Photo Library", style: .default) { action in
+                    imagePicker.sourceType = .photoLibrary
+                    self.present(imagePicker, animated: true)
+                }
+                alert.addAction(photoAction)
+            }
+            
+            present(alert, animated: true)
+        }
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+extension ToDoItemTableViewController: UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        dismiss(animated: true)
+        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let sectionPicker = picker as? SectionImagePickerController else { return }
+        guard let section = sectionPicker.section else { return }
+        let key = todo.keys[section]
+        todo.setValue(image, forKey: key)
+        let indexPath = IndexPath(row: 0, section: section)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }
+
+// MARK: - UINavigationControllerDelegate
+extension ToDoItemTableViewController: UINavigationControllerDelegate {}

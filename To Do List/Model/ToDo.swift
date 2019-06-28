@@ -48,4 +48,9 @@ import UIKit
         formatter.timeStyle = .none
         return formatter.string(from: dueDate)
     }
+    
+    override func copy() -> Any {
+        let newToDo = ToDo(title: title, isComplete: isComplete, dueDate: dueDate, notes: notes, image: image)
+        return newToDo
+    }
 }
